@@ -1,26 +1,46 @@
-import Container from 'react-bootstrap/Container';
 import React from 'react';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import './NavBar.scss';
+import AppBar from '@mui/material/AppBar';
+import Stack from '@mui/material/Stack';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
 import { Icon } from '@iconify/react';
+import CartWidget from './CartWidget';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 
-function NavBar() {
-
+function appBarLabel(label) {
     return (
-        <Navbar bg="dark" variant="dark">
-            <Container>
-                <Icon icon="emojione:hammer" width="25" height="25"></Icon>
-
-                <Navbar.Brand href="#home">Navbar</Navbar.Brand>
-                <Nav className="me-auto">
-                    <Nav.Link href="#home">Home</Nav.Link>
-                    <Nav.Link href="#features">Features</Nav.Link>
-                    <Nav.Link href="#pricing">Pricing</Nav.Link>
-                </Nav>s
-            </Container>
-        </Navbar>
+        <Toolbar>
+            <IconButton edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }}>
+                <MenuIcon />
+            </IconButton>
+            <Icon icon="emojione:hammer" width="25" height="25"></Icon>
+            <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
+                {label}
+            </Typography>
+            <IconButton><CartWidget /></IconButton>
+        </Toolbar>
     );
 }
 
-export default NavBar;
+const darkTheme = createTheme({
+    palette: {
+        mode: 'dark',
+        primary: {
+            main: '#1976d2',
+        },
+    },
+});
+
+export default function EnableColorOnDarkAppBar() {
+    return (
+        <Stack spacing={2} sx={{ flexGrow: 1 }}>
+            <ThemeProvider theme={darkTheme}>
+                <AppBar position="static" color="primary">
+                    {appBarLabel('Bonneville')}
+                </AppBar>
+            </ThemeProvider>
+        </Stack>
+    );
+}
