@@ -1,14 +1,14 @@
 import './App.css';
 import React from 'react';
 import NavBar from './components/navbar/NavBar'
-import ItemListContainer from './components/navbar/itemListContainer/ItemListContainer';
+import ItemListContainer from './components/itemListContainer/ItemListContainer';
 
 
 function App() {
   return (
     <div>
       <NavBar />
-      <ItemListContainer />
+      <ItemListContainer titulo="MI TIENDA ONLINE" />
     </div>
   );
 }
