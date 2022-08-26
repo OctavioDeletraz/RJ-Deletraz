@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import ItemCount from './itemCount/ItemCount';
 import { pedirDatos } from '../../helpers/pedirDatos';
 import ItemList from '../itemList/ItemList';
 
@@ -26,10 +25,6 @@ const ItemListContainer = ({ titulo }) => {
         <div>
 
             <h1>{titulo}</h1>
-            <ItemCount max={8} />
-            <ItemCount max={9} />
-            <ItemCount max={10} />
-
             <ItemList productos={productos} />
 
         </div>
