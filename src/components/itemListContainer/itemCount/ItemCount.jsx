@@ -1,5 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
+import { IconButton, Container, ButtonGroup, Icon, Typography } from '@mui/material';
+import { Remove, Add } from '@mui/icons-material';
 
 const ItemCount = ({ max = 20 }) => {
 
@@ -18,11 +20,14 @@ const ItemCount = ({ max = 20 }) => {
     }
 
     return (
-        <div>
-            <button onClick={handlerRestar}>-</button>
-            <span>{counter}</span>
-            <button onClick={handlerSumar}>+</button>
-        </div>
+        <Container>
+            <ButtonGroup variant="contained" aria-label="outlined primary button group">
+                <IconButton onClick={handlerRestar}><Remove /></IconButton>
+                <Typography variant='body2'>{counter}</Typography>
+                {/* Me falta centrar el counter */}
+                <IconButton onClick={handlerSumar}><Add /></IconButton>
+            </ButtonGroup>
+        </Container>
     )
 }
 
