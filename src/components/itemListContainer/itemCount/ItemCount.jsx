@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import { IconButton, Container, ButtonGroup, Icon, Typography } from '@mui/material';
+import { IconButton, Container, ButtonGroup, Typography } from '@mui/material';
 import { Remove, Add } from '@mui/icons-material';
 
 const ItemCount = ({ max = 20 }) => {

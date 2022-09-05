@@ -8,6 +8,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { Icon } from '@iconify/react';
 import CartWidget from './CartWidget';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { Link } from 'react-router-dom';
 
 function appBarLabel(label) {
     return (
@@ -19,8 +20,11 @@ function appBarLabel(label) {
             <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
                 {label}
             </Typography>
+            <Link to={'/productos/herramientas'}>Herramientas</Link>
+            <Link to={'/productos/maquinas'}>Maquinas</Link>
+            <Link to={'/productos/electricidad'}>Electricidad</Link >
             <IconButton><CartWidget /></IconButton>
-        </Toolbar>
+        </Toolbar >
     );
 }
 

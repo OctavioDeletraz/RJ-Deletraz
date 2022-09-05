@@ -3,19 +3,22 @@ import React from 'react';
 import NavBar from './components/navbar/NavBar'
 import ItemListContainer from './components/itemListContainer/ItemListContainer';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import ItemDetailContainer from './components/itemDetailContainer/ItemDetailContainer';
 
 function App() {
   return (
     <BrowserRouter>
 
+      <NavBar />
+
       <Routes>
-        {/* Listado de rutas */}
-        <Route path="contacto" element={<contacto />} />
+        <Route path='/' element={<ItemListContainer />} />
+        <Route path='/productos/:categoryId' element={<ItemListContainer />} />
+        <Route path='item/:itemId' element={<ItemDetailContainer />} />
         <Route path='*' element={<Navigate to="/" />} />
       </Routes>
 
-      <NavBar />
-      <ItemListContainer titulo="MI TIENDA ONLINE" />
+      <ItemDetailContainer idProducto={1} />
       {/* <Footer/> */}
     </BrowserRouter>
   );
