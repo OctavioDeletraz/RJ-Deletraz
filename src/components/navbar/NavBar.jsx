@@ -20,6 +20,9 @@ function appBarLabel(label) {
             <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
                 {label}
             </Typography>
+            <Link to={'/'}>Produductos</Link>
+            <Link to={'/productos/jardin'}>jardin</Link>
+            <Link to={'/productos/griferias'}>griferias</Link>
             <Link to={'/productos/herramientas'}>Herramientas</Link>
             <Link to={'/productos/maquinas'}>Maquinas</Link>
             <Link to={'/productos/electricidad'}>Electricidad</Link >
