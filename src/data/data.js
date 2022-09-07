@@ -4,10 +4,11 @@ export const stock = [
         nombre: 'Martillo',
         marca: "Santa Juana",
         precio: 1600,
-        img: 'https://via.placeholder.com/250',
+        img: "https://via.placeholder.com/250",
         stock: 15,
         desc: 'Martillo 300gr',
-        categoria: 'herramientas'
+        categoria: 'herramientas',
+        caracteristicas: ["Mango de madera", "Peso de la masa 200gr"]
     },
     {
         id: 2,
@@ -17,7 +18,8 @@ export const stock = [
         img: 'https://via.placeholder.com/250',
         stock: 60,
         desc: 'Destornillador phillips n6',
-        categoria: 'herramientas'
+        categoria: 'herramientas',
+        caracteristicas: ["Aleación cromo-vanadio", "Punta phillips n6", "Mango ergonomico"]
     },
     {
         id: 3,
@@ -27,7 +29,8 @@ export const stock = [
         img: 'https://via.placeholder.com/250',
         stock: 3,
         desc: 'Taladro 1200W con regulador de revoluciones',
-        categoria: 'maquinas'
+        categoria: 'maquinas',
+        caracteristicas: ["6000rpm", "Con regulador de velocidad", "Inversion de marcha"]
     },
     {
         id: 4,
@@ -37,7 +40,8 @@ export const stock = [
         img: 'https://via.placeholder.com/250',
         stock: 22,
         desc: 'Espatula mango plastico 10cm',
-        categoria: 'herramientas'
+        categoria: 'herramientas',
+        caracteristicas: ["Cabo de plastico", "10cm de ancho"]
     },
     {
         id: 5,
@@ -47,7 +51,8 @@ export const stock = [
         img: 'https://via.placeholder.com/250',
         stock: 8,
         desc: 'Alicate ideal para cortar cables de hasta 10mm',
-        categoria: 'herramientas'
+        categoria: 'herramientas',
+        caracteristicas: ["Aleación cromo-vanadio", "Mango ergonomico de goma espuma"]
     },
     {
         id: 6,
@@ -57,7 +62,8 @@ export const stock = [
         img: 'https://via.placeholder.com/250',
         stock: 2,
         desc: 'Pinza emperometrica con medidor de tension por induccion',
-        categoria: 'electricidad'
+        categoria: 'electricidad',
+        caracteristicas: ["Regulador de tension", "Regulador de corriente", "Trabajo por inducción"]
     },
     {
         id: 7,
@@ -67,7 +73,8 @@ export const stock = [
         img: 'https://via.placeholder.com/250',
         stock: 6,
         desc: 'Monocomando para cocina FV Arizona',
-        categoria: 'griferias'
+        categoria: 'griferias',
+        caracteristicas: ["Canilla de cocina", "Flexibles de 40cm"]
     },
     {
         id: 8,
@@ -77,7 +84,8 @@ export const stock = [
         img: 'https://via.placeholder.com/250',
         stock: 4,
         desc: 'Tijera jardinera para podar',
-        categoria: 'jardin'
+        categoria: 'jardin',
+        caracteristicas: ["Afilada en piedra", "Largo de punta 20cm", "Regulación de tensión"]
     },
     {
         id: 9,
@@ -87,7 +95,8 @@ export const stock = [
         img: 'https://via.placeholder.com/250',
         stock: 50,
         desc: 'Destornillador plano n8 punta imantada',
-        categoria: 'herramientas'
+        categoria: 'herramientas',
+        caracteristicas: ["Mango ergonomico", "Punta plana N8", "Aleacion cromo-vanadio"]
     },
     {
         id: 10,
