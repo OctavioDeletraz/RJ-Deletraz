@@ -1,5 +1,5 @@
-import { Button, Typography } from "@mui/material"
-import React from 'react'
+import { Typography } from "@mui/material"
+import React, { useState } from 'react'
 import ItemCount from "../itemListContainer/itemCount/ItemCount"
 
 
@@ -20,35 +20,20 @@ const Item = styled(Paper)(({ theme }) => ({
 
 
 export const ItemDetail = ({ item }) => {
+
+    const [cantidad, setCantidad] = useState(1)
+
+    const handleAgregar = () => {
+        const itemToCart = {
+            id: item.id,
+            precio: item.precio,
+            nombre: item.nombre,
+            cantidad
+        }
+        console.log(itemToCart)
+    }
+
     return (
-        // <Card sx={{ maxWidth: 250 }}>
-        //     <CardMedia
-        //         component="img"
-        //         image={item.img}
-        //         alt="" />
-        //     <CardActionArea>
-        //         <CardContent>
-        //             <Typography gutterBottom variant="body2" component="div">
-        //                 Stock disponible: {item.stock}
-        //             </Typography>
-        //             <Typography gutterBottom variant="h5" component="div">
-        //                 {item.nombre}
-        //             </Typography>
-        //         </CardContent>
-        //     </CardActionArea>
-        //     <CardContent>
-        //         <Typography variant="body2" color="text.secondary">
-        //             {item.desc}
-        //         </Typography>
-        //     </CardContent>
-        //     <CardActions>
-        //         <ItemCount max={item.stock} />
-        //         <Typography variant="body2" color="text.secondary">
-        //             {item.precio}
-        //         </Typography>
-        //         <Button variant="contained">Añadir</Button>
-        //     </CardActions>
-        // </Card >
 
         <Box sx={{ flexGrow: 1 }}>
             <Grid container spacing={2}>
@@ -72,8 +57,12 @@ export const ItemDetail = ({ item }) => {
                         <Typography variant="body2" color="text.secondary">
                             Precio: ${item.precio}
                         </Typography>
-                        <ItemCount max={item.stock} />
-                        <Button variant="contained">Añadir</Button>
+                        <ItemCount
+                            max={item.stock}
+                            counter={cantidad}
+                            setCounter={setCantidad}
+                            handleAgregar={handleAgregar}
+                        />
                     </Item>
                 </Grid>
                 <Grid xs={6} md={8}>

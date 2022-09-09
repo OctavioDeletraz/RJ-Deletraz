@@ -1,11 +1,8 @@
 import React from 'react';
-import { useState } from 'react';
-import { IconButton, Container, ButtonGroup, Typography } from '@mui/material';
+import { IconButton, Container, ButtonGroup, Typography, Button } from '@mui/material';
 import { Remove, Add } from '@mui/icons-material';
 
-const ItemCount = ({ max = 20 }) => {
-
-    let [counter, setCounter] = useState(1)
+const ItemCount = ({ max, counter, setCounter, handleAgregar }) => {
 
     const handlerSumar = () => {
         if (counter < max) {
@@ -27,6 +24,9 @@ const ItemCount = ({ max = 20 }) => {
                 {/* Me falta centrar el counter */}
                 <IconButton onClick={handlerSumar}><Add /></IconButton>
             </ButtonGroup>
+            <Button
+                onClick={handleAgregar}
+                variant="contained">Añadir</Button>
         </Container>
     )
 }
