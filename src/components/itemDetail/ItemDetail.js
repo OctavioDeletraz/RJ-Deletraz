@@ -1,16 +1,14 @@
 import { Typography } from "@mui/material"
 import React, { useState } from 'react'
 import ItemCount from "../itemListContainer/itemCount/ItemCount"
-
-
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Unstable_Grid2';
 import { CaracteristicaLista } from "../../helpers/CaracteristicaLista";
-import { CartContext } from "../../context/CartContext";
-import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { useCartContext } from "../../context/CartContext";
+
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -24,7 +22,7 @@ const Item = styled(Paper)(({ theme }) => ({
 
 export const ItemDetail = ({ item }) => {
 
-    const { cart, addToCart, isInCart } = useContext(CartContext)
+    const { cart, addToCart, isInCart } = useCartContext()
 
     const [cantidad, setCantidad] = useState(1)
 
