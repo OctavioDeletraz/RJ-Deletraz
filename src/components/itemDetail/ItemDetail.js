@@ -8,6 +8,9 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Unstable_Grid2';
 import { CaracteristicaLista } from "../../helpers/CaracteristicaLista";
+import { CartContext } from "../../context/CartContext";
+import { useContext } from "react";
+import { Link } from "react-router-dom";
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -21,6 +24,8 @@ const Item = styled(Paper)(({ theme }) => ({
 
 export const ItemDetail = ({ item }) => {
 
+    const { cart, addToCart, isInCart } = useContext(CartContext)
+
     const [cantidad, setCantidad] = useState(1)
 
     const handleAgregar = () => {
@@ -30,8 +35,11 @@ export const ItemDetail = ({ item }) => {
             nombre: item.nombre,
             cantidad
         }
-        console.log(itemToCart)
+        isInCart(item.id)
+        addToCart(itemToCart)
     }
+
+
 
     return (
 
@@ -57,12 +65,22 @@ export const ItemDetail = ({ item }) => {
                         <Typography variant="body2" color="text.secondary">
                             Precio: ${item.precio}
                         </Typography>
-                        <ItemCount
-                            max={item.stock}
-                            counter={cantidad}
-                            setCounter={setCantidad}
-                            handleAgregar={handleAgregar}
-                        />
+
+
+                        {
+                            isInCart(item.id)
+                                ?
+                                <Link to="/cart">
+                                    Terminar mi compra
+                                </Link>
+                                :
+                                <ItemCount
+                                    max={item.stock}
+                                    counter={cantidad}
+                                    setCounter={setCantidad}
+                                    handleAgregar={handleAgregar}
+                                />
+                        }
                     </Item>
                 </Grid>
                 <Grid xs={6} md={8}>
