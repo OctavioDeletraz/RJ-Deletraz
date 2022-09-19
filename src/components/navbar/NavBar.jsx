@@ -12,6 +12,7 @@ import { Link } from 'react-router-dom';
 import "./NavBar.css"
 import { Button, Menu, MenuItem } from '@mui/material';
 import { useState } from 'react';
+import { useLoginContext } from '../../context/LoginContext';
 
 function appBarLabel(label) {
 
@@ -23,6 +24,8 @@ function appBarLabel(label) {
     const handleClose = () => {
         setAnchorEl(null);
     };
+
+    const { user, logout } = useLoginContext()
 
     return (
         <Toolbar>
@@ -68,6 +71,10 @@ function appBarLabel(label) {
             <IconButton>
                 <CartWidget />
             </IconButton>
+            <div>
+                <small>{user.user}</small>
+                <Button onClick={logout}>Logout</Button>
+            </div>
         </Toolbar >
     );
 }
