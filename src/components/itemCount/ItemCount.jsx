@@ -19,14 +19,28 @@ const ItemCount = ({ max, counter, setCounter, handleAgregar }) => {
     return (
         <Container>
             <ButtonGroup variant="contained" aria-label="outlined primary button group">
-                <IconButton onClick={handlerRestar}><Remove /></IconButton>
-                <Typography variant='body2'>{counter}</Typography>
-                {/* Me falta centrar el counter */}
-                <IconButton onClick={handlerSumar}><Add /></IconButton>
+                <IconButton
+                    onClick={handlerRestar}
+                    disabled={counter === 1}
+                >
+                    <Remove />
+                </IconButton>
+                <Button
+                    variant="disabled">
+                    <Typography>{counter}</Typography>
+                </Button>
+                <IconButton
+                    onClick={handlerSumar}
+                    disabled={counter === max}>
+                    <Add />
+                </IconButton>
             </ButtonGroup>
             <Button
                 onClick={handleAgregar}
-                variant="contained">Añadir</Button>
+                variant="contained"
+                disabled={counter === 0}>
+                Añadir
+            </Button>
         </Container>
     )
 }

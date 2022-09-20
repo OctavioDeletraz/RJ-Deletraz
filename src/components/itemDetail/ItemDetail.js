@@ -1,6 +1,6 @@
 import { Typography } from "@mui/material"
 import React, { useState } from 'react'
-import ItemCount from "../itemListContainer/itemCount/ItemCount"
+import ItemCount from "../itemCount/ItemCount"
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
@@ -22,7 +22,7 @@ const Item = styled(Paper)(({ theme }) => ({
 
 export const ItemDetail = ({ item }) => {
 
-    const { cart, addToCart, isInCart } = useCartContext()
+    const { addToCart, isInCart } = useCartContext()
 
     const [cantidad, setCantidad] = useState(1)
 
@@ -64,7 +64,7 @@ export const ItemDetail = ({ item }) => {
                             Precio: ${item.precio}
                         </Typography>
 
-
+                        {/* controlar stock 0 que no se pueda comprar */}
                         {
                             isInCart(item.id)
                                 ?

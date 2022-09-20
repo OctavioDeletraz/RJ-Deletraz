@@ -6,15 +6,15 @@ import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Icon } from '@iconify/react';
-import CartWidget from './CartWidget';
+import CartWidget from '../CartWidget/CartWidget';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
-import "./NavBar.css"
+import "./NavBar.scss"
 import { Button, Menu, MenuItem } from '@mui/material';
 import { useState } from 'react';
 import { useLoginContext } from '../../context/LoginContext';
 
-function appBarLabel(label) {
+function UseAppBarLabel(label) {
 
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
@@ -94,7 +94,7 @@ export default function EnableColorOnDarkAppBar() {
         <Stack spacing={2} sx={{ flexGrow: 1 }}>
             <ThemeProvider theme={darkTheme}>
                 <AppBar position="static" color="primary">
-                    {appBarLabel('Bonneville')}
+                    {UseAppBarLabel('Bonneville')}
                 </AppBar>
             </ThemeProvider>
         </Stack>

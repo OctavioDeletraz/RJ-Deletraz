@@ -4,7 +4,7 @@ import { LoginContext } from '../../context/LoginContext'
 export const LoginScreen = () => {
 
     const { login, user } = useContext(LoginContext)
-    console.log(user)
+    
     const [email, setEmail] = useState('')
     const [pass, setPass] = useState('')
 
@@ -37,6 +37,7 @@ export const LoginScreen = () => {
                     onChange={handlePassChange}
                 />
                 <button className='btn btn-primary' type='submit'>Ingresar</button>
+                {user.error && <small>{user.error}</small>}
             </form>
         </div>
     )

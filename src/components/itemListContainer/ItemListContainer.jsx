@@ -3,6 +3,7 @@ import { pedirDatos } from '../../helpers/pedirDatos';
 import ItemList from '../itemList/ItemList';
 import { Navigate, useParams } from 'react-router-dom';
 import { useLoginContext } from '../../context/LoginContext';
+import { Loader } from '../../Loader/Loader';
 
 const ItemListContainer = ({ titulo }) => {
 
@@ -45,7 +46,7 @@ const ItemListContainer = ({ titulo }) => {
                         <h1>{titulo}</h1>
                         {
                             loading
-                                ? <h2>Cargando...</h2>
+                                ? <Loader />
                                 : <ItemList productos={productos} />
                         }
                     </div>

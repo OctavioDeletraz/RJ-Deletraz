@@ -2,10 +2,21 @@ import React from 'react'
 import { useCartContext } from '../../context/CartContext'
 import { Button } from '@mui/material'
 import DeleteIcon from '@mui/icons-material/Delete';
+import { Link } from 'react-router-dom';
 
 export const Cart = () => {
 
     const { cart, cartTotal, emptyCart, removeItem } = useCartContext()
+
+    if (cart.length === 0) {
+        return (
+            <div>
+                <h2>Tu carrito está vacío</h2>
+                <hr />
+                <Link to="/">Ir a comprar</Link>
+            </div>
+        )
+    }
 
     return (
         <div>

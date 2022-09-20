@@ -5,7 +5,7 @@ export const stock = [
         marca: "Santa Juana",
         precio: 1600,
         img: "https://via.placeholder.com/250",
-        stock: 15,
+        stock: 0,
         desc: 'Martillo 300gr',
         categoria: 'herramientas',
         caracteristicas: ["Mango de madera", "Peso de la masa 200gr"]
