@@ -4,7 +4,7 @@ export const stock = [
         nombre: 'Martillo',
         marca: "Santa Juana",
         precio: 1600,
-        img: "https://via.placeholder.com/250",
+        img: "https://firebasestorage.googleapis.com/v0/b/bonneville-react.appspot.com/o/martillo.jpeg?alt=media&token=3d73f3fd-d746-4126-9f05-08eb53580a9e",
         stock: 0,
         desc: 'Martillo 300gr',
         categoria: 'herramientas',
@@ -15,7 +15,7 @@ export const stock = [
         nombre: 'Destornillador phillips n6',
         marca: "Bremen",
         precio: 400,
-        img: 'https://via.placeholder.com/250',
+        img: 'https://firebasestorage.googleapis.com/v0/b/bonneville-react.appspot.com/o/destornilladorPhillips.jpeg?alt=media&token=f453e611-2764-410b-8325-30b8018a1c7c',
         stock: 60,
         desc: 'Destornillador phillips n6',
         categoria: 'herramientas',
@@ -26,9 +26,9 @@ export const stock = [
         nombre: 'Taladro',
         marca: "Gamma",
         precio: 9000,
-        img: 'https://via.placeholder.com/250',
-        stock: 3,
-        desc: 'Taladro 1200W con regulador de revoluciones',
+        img: 'https://firebasestorage.googleapis.com/v0/b/bonneville-react.appspot.com/o/taladro.jpeg?alt=media&token=50eb4138-65aa-4e81-bc61-4f7df3137550',
+        stock: 30,
+        desc: 'Taladro marca Gamma de 600w con regulador de velocidad e inversion de marcha',
         categoria: 'maquinas',
         caracteristicas: ["6000rpm", "Con regulador de velocidad", "Inversion de marcha"]
     },
@@ -37,7 +37,7 @@ export const stock = [
         nombre: 'Espatula',
         marca: "Santa Juana",
         precio: 430,
-        img: 'https://via.placeholder.com/250',
+        img: 'https://firebasestorage.googleapis.com/v0/b/bonneville-react.appspot.com/o/espatula.jpeg?alt=media&token=ab1e9256-8a9c-474d-b6e2-f8ed9819160c',
         stock: 22,
         desc: 'Espatula mango plastico 10cm',
         categoria: 'herramientas',
@@ -48,20 +48,20 @@ export const stock = [
         nombre: 'Alicate',
         marca: "Bremen",
         precio: 900,
-        img: 'https://via.placeholder.com/250',
-        stock: 8,
+        img: 'https://firebasestorage.googleapis.com/v0/b/bonneville-react.appspot.com/o/alicate.jpeg?alt=media&token=ad5acdc1-d69a-4ebc-b335-86ec76cb6adf',
+        stock: 80,
         desc: 'Alicate ideal para cortar cables de hasta 10mm',
         categoria: 'herramientas',
         caracteristicas: ["Aleación cromo-vanadio", "Mango ergonomico de goma espuma"]
     },
     {
         id: 6,
-        nombre: 'Pinza emperometrica',
+        nombre: 'Pinza amperometrica',
         marca: "Bremen",
         precio: 14000,
-        img: 'https://via.placeholder.com/250',
-        stock: 2,
-        desc: 'Pinza emperometrica con medidor de tension por induccion',
+        img: 'https://firebasestorage.googleapis.com/v0/b/bonneville-react.appspot.com/o/pinzaAmperometrica.jpeg?alt=media&token=f3cf6c30-1f01-4c75-89c2-0dc435ce838c',
+        stock: 20,
+        desc: 'Pinza amperometrica con medidor de tension por induccion',
         categoria: 'electricidad',
         caracteristicas: ["Regulador de tension", "Regulador de corriente", "Trabajo por inducción"]
     },
@@ -70,8 +70,8 @@ export const stock = [
         nombre: 'Monocomando FV Arizona',
         marca: "FV",
         precio: 12000,
-        img: 'https://via.placeholder.com/250',
-        stock: 6,
+        img: 'https://firebasestorage.googleapis.com/v0/b/bonneville-react.appspot.com/o/giferia.jpeg?alt=media&token=cee65b36-dd4b-4aad-b6dd-7787b47fdf3e',
+        stock: 60,
         desc: 'Monocomando para cocina FV Arizona',
         categoria: 'griferias',
         caracteristicas: ["Canilla de cocina", "Flexibles de 40cm"]
@@ -81,8 +81,8 @@ export const stock = [
         nombre: 'Tijera de poda',
         marca: "Santa Juana",
         precio: 4500,
-        img: 'https://via.placeholder.com/250',
-        stock: 4,
+        img: 'https://firebasestorage.googleapis.com/v0/b/bonneville-react.appspot.com/o/tijeraPoda.jpeg?alt=media&token=05152d8b-388b-46fc-882f-0a5544536a75',
+        stock: 40,
         desc: 'Tijera jardinera para podar',
         categoria: 'jardin',
         caracteristicas: ["Afilada en piedra", "Largo de punta 20cm", "Regulación de tensión"]
@@ -92,8 +92,8 @@ export const stock = [
         nombre: 'Destornillador plano n8',
         marca: "",
         precio: 800,
-        img: 'https://via.placeholder.com/250',
-        stock: 50,
+        img: 'https://firebasestorage.googleapis.com/v0/b/bonneville-react.appspot.com/o/destornilladorPlano.jpeg?alt=media&token=66e2c418-a288-4893-85a1-60bc2ff72312',
+        stock: 500,
         desc: 'Destornillador plano n8 punta imantada',
         categoria: 'herramientas',
         caracteristicas: ["Mango ergonomico", "Punta plana N8", "Aleacion cromo-vanadio"]
@@ -103,109 +103,120 @@ export const stock = [
         nombre: 'Manguera 1/2 25mts',
         marca: "",
         precio: 2000,
-        img: 'https://via.placeholder.com/250',
-        stock: 10,
+        img: 'https://firebasestorage.googleapis.com/v0/b/bonneville-react.appspot.com/o/mangueraRiego.jpeg?alt=media&token=27d7a1c4-ec2a-42f0-81e7-682d407fbdd2',
+        stock: 100,
         desc: 'Manguera de riego de 1/2 25mt antitorcion reforzada',
-        categoria: 'jardin'
+        categoria: 'jardin',
+        caracteristicas: ["antitorcion", "resitencia UV"]
     },
     {
         id: 11,
         nombre: 'Manguera 1/2 50mts',
         marca: "",
         precio: 3500,
-        img: 'https://via.placeholder.com/250',
+        img: 'https://firebasestorage.googleapis.com/v0/b/bonneville-react.appspot.com/o/mangueraRiego.jpeg?alt=media&token=27d7a1c4-ec2a-42f0-81e7-682d407fbdd2',
         stock: 50,
         desc: 'Manguera de riego de 1/2 50mt antitorcion reforzada',
-        categoria: 'jardin'
+        categoria: 'jardin',
+        caracteristicas: ["antitorcion", "resitencia UV"]
     },
     {
         id: 12,
         nombre: 'Manguera 3/4 25mts',
         marca: "",
         precio: 3000,
-        img: 'https://via.placeholder.com/250',
-        stock: 10,
+        img: 'https://firebasestorage.googleapis.com/v0/b/bonneville-react.appspot.com/o/mangueraRiego.jpeg?alt=media&token=27d7a1c4-ec2a-42f0-81e7-682d407fbdd2',
+        stock: 34,
         desc: 'Manguera de riego de 3/4 25mt antitorcion reforzada',
-        categoria: 'jardin'
+        categoria: 'jardin',
+        caracteristicas: ["antitorcion", "resitencia UV"]
     },
     {
         id: 13,
         nombre: 'Manguera 3/4 50mts',
         marca: "",
         precio: 5500,
-        img: 'https://via.placeholder.com/250',
-        stock: 16,
+        img: 'https://firebasestorage.googleapis.com/v0/b/bonneville-react.appspot.com/o/mangueraRiego.jpeg?alt=media&token=27d7a1c4-ec2a-42f0-81e7-682d407fbdd2',
+        stock: 86,
         desc: 'Manguera de riego de 3/4 50mt antitorcion reforzada',
-        categoria: 'jardin'
+        categoria: 'jardin',
+        caracteristicas: ["antitorcion", "resitencia UV"]
     },
     {
         id: 14,
         nombre: 'Cable unipolar 1.5mm marron 100mt',
         marca: "",
         precio: 800,
-        img: 'https://via.placeholder.com/250',
+        img: 'https://firebasestorage.googleapis.com/v0/b/bonneville-react.appspot.com/o/cableMarron.jpeg?alt=media&token=a1c3f0d8-cb06-42ec-bfa3-ec715b0b66a4',
         stock: 4500,
         desc: 'Cable unipolar 1.5mm color marron excelente para instalaciones electricas, rollo cerrado de 100mt',
-        categoria: 'electricidad'
+        categoria: 'electricidad',
+        caracteristicas: ["Trefilado", "varios colores"]
     },
     {
         id: 15,
         nombre: 'Cable unipolar 1.5mm celeste 100mt',
         marca: "",
         precio: 4500,
-        img: 'https://via.placeholder.com/250',
-        stock: 15,
+        img: 'https://firebasestorage.googleapis.com/v0/b/bonneville-react.appspot.com/o/cableCeleste.jpeg?alt=media&token=097f01cd-cd87-4ddf-ac97-59113682bb32',
+        stock: 150,
         desc: 'Cable unipolar 1.5mm color celeste excelente para instalaciones electricas, rollo cerrado de 100mt',
-        categoria: 'electricidad'
+        categoria: 'electricidad',
+        caracteristicas: ["Trefilado", "varios colores"]
     },
     {
         id: 16,
         nombre: 'Cable unipolar 2mm marron 100mt',
         marca: "",
         precio: 5000,
-        img: 'https://via.placeholder.com/250',
-        stock: 15,
+        img: 'https://firebasestorage.googleapis.com/v0/b/bonneville-react.appspot.com/o/cableMarron.jpeg?alt=media&token=a1c3f0d8-cb06-42ec-bfa3-ec715b0b66a4',
+        stock: 150,
         desc: 'Cable unipolar 2mm color marron excelente para instalaciones electricas, rollo cerrado de 100mt',
-        categoria: 'electricidad'
+        categoria: 'electricidad',
+        caracteristicas: ["Trefilado", "varios colores"]
     },
     {
         id: 17,
         nombre: 'Cable unipolar 2mm celeste 100mt',
         marca: "",
         precio: 5000,
-        img: 'https://via.placeholder.com/250',
-        stock: 15,
+        img: 'https://firebasestorage.googleapis.com/v0/b/bonneville-react.appspot.com/o/cableCeleste.jpeg?alt=media&token=097f01cd-cd87-4ddf-ac97-59113682bb32',
+        stock: 150,
         desc: 'Cable unipolar 2mm color celeste excelente para instalaciones electricas, rollo cerrado de 100mt',
-        categoria: 'electricidad'
+        categoria: 'electricidad',
+        caracteristicas: ["Trefilado", "varios colores"]
     },
     {
         id: 18,
         nombre: 'Cable unipolar 2.5mm marron 100mt',
         marca: "",
         precio: 6000,
-        img: 'https://via.placeholder.com/250',
-        stock: 15,
+        img: 'https://firebasestorage.googleapis.com/v0/b/bonneville-react.appspot.com/o/cableMarron.jpeg?alt=media&token=a1c3f0d8-cb06-42ec-bfa3-ec715b0b66a4',
+        stock: 150,
         desc: 'Cable unipolar 2.5mm color marron excelente para instalaciones electricas, rollo cerrado de 100mt',
-        categoria: 'electricidad'
+        categoria: 'electricidad',
+        caracteristicas: ["Trefilado", "varios colores"]
     },
     {
         id: 19,
         nombre: 'Cable unipolar 2.5mm celeste 100mt',
         marca: "",
         precio: 6000,
-        img: 'https://via.placeholder.com/250',
-        stock: 15,
+        img: 'https://firebasestorage.googleapis.com/v0/b/bonneville-react.appspot.com/o/cableCeleste.jpeg?alt=media&token=097f01cd-cd87-4ddf-ac97-59113682bb32',
+        stock: 150,
         desc: 'Cable unipolar 2.5mm color celeste excelente para instalaciones electricas, rollo cerrado de 100mt',
-        categoria: 'electricidad'
+        categoria: 'electricidad',
+        caracteristicas: ["Trefilado", "varios colores"]
     },
     {
         id: 20,
         nombre: 'Pared c/transferencia Allegro',
         marca: "FV",
         precio: 20000,
-        img: 'https://via.placeholder.com/250',
-        stock: 8,
+        img: 'https://firebasestorage.googleapis.com/v0/b/bonneville-react.appspot.com/o/griferiaPared.jpeg?alt=media&token=e6f1a6be-27d9-427f-8717-ed0d7275dcfb',
+        stock: 30,
         desc: 'Griferia de pared FV Allegro c/transferencia',
-        categoria: 'herramientas'
+        categoria: 'griferias',
+        caracteristicas: ["Garantia 5 años", "Cabezales ceramicos", "Transferencia exterior"]
     }
 ]

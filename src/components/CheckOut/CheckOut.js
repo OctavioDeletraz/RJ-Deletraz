@@ -4,6 +4,7 @@ import { Navigate } from 'react-router-dom'
 import { useCartContext } from '../../context/CartContext'
 import { addDoc, collection, doc, getDoc, updateDoc } from 'firebase/firestore'
 import { db } from '../../firebase/config'
+import { stock } from '../../data/data'
 
 export const CheckOut = () => {
 
@@ -55,6 +56,27 @@ export const CheckOut = () => {
             })
     }
 
+    // Funcion para agregar los productos de forma hardcodeada
+
+    // const handleAgregarProductos = () => {
+    //     const prodRef = collection(db, 'productos')
+    //     stock.forEach((prod) => {
+    //         const producto = {
+    //             id: prod.id,
+    //             nombre: prod.nombre,
+    //             marca: prod.marca,
+    //             precio: prod.precio,
+    //             img: prod.img,
+    //             stock: prod.stock,
+    //             desc: prod.desc,
+    //             categoria: prod.categoria,
+    //             caracteristicas: prod.caracteristicas
+    //         }
+
+    //         addDoc(prodRef, producto)
+    //     })
+    // }
+
     if (orderId) {
         return (
             <div>
@@ -100,6 +122,7 @@ export const CheckOut = () => {
 
 
                 <Button type="submit">Enviar</Button>
+                {/* <Button onClick={handleAgregarProductos}>productos</Button> */}
             </form>
         </div>
     )
