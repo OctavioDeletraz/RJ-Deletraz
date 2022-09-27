@@ -52,14 +52,9 @@ export const CartProvider = ({ children }) => {
         })
     }
     const terminarCompra = () => {
-        setCart([])
-    }
-
-    const terminarCompraSwal = (id) => {
         Swal.fire({
             title: 'Compra exitosa!',
-            text: `Tu numero de orden es : ${id}`,
-            icon: 'warning',
+            icon: 'succes',
             confirmButtonColor: '#3085d6',
             confirmButtonText: 'Genial!'
         })
@@ -81,7 +76,6 @@ export const CartProvider = ({ children }) => {
                 emptyCart,
                 removeItem,
                 terminarCompra,
-                terminarCompraSwal
             }
         }>
             {children}
