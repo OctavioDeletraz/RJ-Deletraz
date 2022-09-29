@@ -2,7 +2,7 @@ import { Button } from '@mui/material'
 import React, { useState } from 'react'
 import { Navigate } from 'react-router-dom'
 import { useCartContext } from '../../context/CartContext'
-import { addDoc, collection, doc, getDoc, updateDoc } from 'firebase/firestore'
+import { addDoc, collection, doc, getDocs, writeBatch } from 'firebase/firestore'
 import { db } from '../../firebase/config'
 import { stock } from '../../data/data'
 
@@ -17,12 +17,6 @@ export const CheckOut = () => {
 
     const [orderId, setOrderId] = useState(null)
 
-    const orden = {
-        comprador: values,
-        items: cart,
-        total: cartTotal()
-    }
-
     const handleInputChange = (e) => {
         setValues({
             ...values,
@@ -32,28 +26,23 @@ export const CheckOut = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
+        const orden = {
+            comprador: values,
+            items: cart,
+            total: cartTotal()
+        }
 
+
+        const batch = writeBatch(db)
         const ordenesRef = collection(db, 'ordenes')
-        cart.forEach((item) => {
-            const docRef = doc(db, 'productos', item.id)
-            getDoc(docRef)
-                .then((doc) => {
-                    if (doc.data().stock >= item.cantidad) {
-                        updateDoc(docRef, {
-                            stock: doc.data().stock - item.cantidad
-                        })
-                    } else {
-                        alert("No hay stock suficiente")
-                    }
-                })
-        })
+        const productosRef = collection(db, 'productos')
 
-        addDoc(ordenesRef, orden)
-            .then((doc) => {
-                // terminarCompraSwal(doc.id)
-                setOrderId(doc.id)
-                terminarCompra()
-            })
+        // addDoc(ordenesRef, orden)
+        //     .then((doc) => {
+        //         // terminarCompraSwal(doc.id)
+        //         setOrderId(doc.id)
+        //         terminarCompra()
+        //     })
     }
 
     // Funcion para agregar los productos de forma hardcodeada
