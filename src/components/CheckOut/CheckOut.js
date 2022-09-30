@@ -2,7 +2,7 @@ import { Button } from '@mui/material'
 import React, { useState } from 'react'
 import { Navigate } from 'react-router-dom'
 import { useCartContext } from '../../context/CartContext'
-import { addDoc, collection, doc, getDocs, writeBatch } from 'firebase/firestore'
+import { addDoc, collection, doc, getDocs, writeBatch, query, where, documentId } from 'firebase/firestore'
 import { db } from '../../firebase/config'
 import { stock } from '../../data/data'
 
@@ -24,7 +24,7 @@ export const CheckOut = () => {
         })
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
         const orden = {
             comprador: values,
@@ -36,13 +36,38 @@ export const CheckOut = () => {
         const batch = writeBatch(db)
         const ordenesRef = collection(db, 'ordenes')
         const productosRef = collection(db, 'productos')
+        const q = query(productosRef, where(documentId(), 'in', cart.map(item => item.id)))
 
-        // addDoc(ordenesRef, orden)
-        //     .then((doc) => {
-        //         // terminarCompraSwal(doc.id)
-        //         setOrderId(doc.id)
-        //         terminarCompra()
-        //     })
+        const productos = await getDocs(q)
+        const outOfStock = []
+
+        productos.docs.forEach((doc) => {
+            const itemInCart = cart.find(item => item.id === doc.id)
+
+            if (doc.data().stock >= itemInCart.cantidad) {
+                batch.update(doc.ref, {
+                    stock: doc.data().stock - itemInCart.cantidad
+                })
+            } else {
+                outOfStock.push(itemInCart)
+            }
+        })
+
+        if (outOfStock.length === 0) {
+            batch.commit()
+                .then(() => {
+                    addDoc(ordenesRef, orden)
+                        .then((doc) => {
+                            // terminarCompraSwal(doc.id)
+                            setOrderId(doc.id)
+                            terminarCompra()
+                        })
+                })
+        } else {
+            alert("Hay items sin stock")
+            // Mostrar que productos estan sin stock!
+            console.log(outOfStock)
+        }
     }
 
     // Funcion para agregar los productos de forma hardcodeada
