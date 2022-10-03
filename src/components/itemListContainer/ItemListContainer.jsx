@@ -1,36 +1,12 @@
-import React, { useEffect, useState } from 'react';
 import ItemList from '../itemList/ItemList';
-import { Navigate, useParams } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import { useLoginContext } from '../../context/LoginContext';
 import { Loader } from '../../Loader/Loader';
-import { collection, getDocs, query, where } from 'firebase/firestore';
-import { db } from '../../firebase/config';
+import { useProductos } from '../../hooks/useProductos';
 
 const ItemListContainer = ({ titulo }) => {
 
-    const [productos, setProductos] = useState([])
-    const [loading, setLoading] = useState(true)
-
-    const { categoryId } = useParams()
-
-
-    useEffect(() => {
-        setLoading(true)
-        // 1.- Armar la referencia (Sync)
-        const productosRef = collection(db, 'productos')
-        const q = categoryId
-            ? query(productosRef, where('categoria', '==', categoryId))
-            : productosRef
-        // 2.- Consumir esa referencia (Async)
-        getDocs(q)
-            .then((resp) => {
-                const productosDB = resp.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
-                setProductos(productosDB)
-            })
-            .finally(() => {
-                setLoading(false)
-            })
-    }, [categoryId])
+    const { productos, loading } = useProductos()
 
     const { user } = useLoginContext()
 

@@ -13,6 +13,8 @@ import "./NavBar.scss"
 import { Button, Menu, MenuItem } from '@mui/material';
 import { useState } from 'react';
 import { useLoginContext } from '../../context/LoginContext';
+import LogoutIcon from '@mui/icons-material/Logout';
+import { AccountCircle } from '@mui/icons-material';
 
 function UseAppBarLabel(label) {
 
@@ -71,10 +73,12 @@ function UseAppBarLabel(label) {
             <IconButton>
                 <CartWidget />
             </IconButton>
-            <div>
-                <small>{user.user}</small>
-                <Button onClick={logout}>Logout</Button>
-            </div>
+            <IconButton>
+                <AccountCircle />
+            </IconButton>
+            <IconButton>
+                <LogoutIcon onClick={logout} />
+            </IconButton>
         </Toolbar >
     );
 }

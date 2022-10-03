@@ -1,15 +1,16 @@
 import { Button } from '@mui/material'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Navigate } from 'react-router-dom'
 import { useCartContext } from '../../context/CartContext'
-import { addDoc, collection, doc, getDocs, writeBatch, query, where, documentId } from 'firebase/firestore'
+import { addDoc, collection, getDocs, writeBatch, query, where, documentId } from 'firebase/firestore'
 import { db } from '../../firebase/config'
-import { stock } from '../../data/data'
+import { useForm } from '../../hooks/useForm'
+// import { stock } from '../../data/data'
 
 export const CheckOut = () => {
 
     const { cart, cartTotal, terminarCompra } = useCartContext()
-    const [values, setValues] = useState({
+    const { values, handleInputChange } = useForm({
         nombre: "",
         email: "",
         direccion: "",
@@ -17,12 +18,7 @@ export const CheckOut = () => {
 
     const [orderId, setOrderId] = useState(null)
 
-    const handleInputChange = (e) => {
-        setValues({
-            ...values,
-            [e.target.name]: e.target.value
-        })
-    }
+
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -30,6 +26,15 @@ export const CheckOut = () => {
             comprador: values,
             items: cart,
             total: cartTotal()
+        }
+
+        if (values.nombre.length < 2) {
+            alert("Nombre incorrecto")
+            return
+        }
+
+        if (values.nombre.length < 4) {
+            alert("Email incorrecto")
         }
 
 
@@ -76,7 +81,7 @@ export const CheckOut = () => {
     //     const prodRef = collection(db, 'productos')
     //     stock.forEach((prod) => {
     //         const producto = {
-    //             id: prod.id,
+    //             // id: prod.id,
     //             nombre: prod.nombre,
     //             marca: prod.marca,
     //             precio: prod.precio,

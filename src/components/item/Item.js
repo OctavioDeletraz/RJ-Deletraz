@@ -1,15 +1,17 @@
-import React from "react"
+import React, { useState } from "react"
 import { Card, CardActions, CardContent, Typography, CardMedia, CardActionArea, Button } from "@mui/material"
 import { Link } from "react-router-dom"
 import "./Item.css"
 
 const Item = ({ producto }) => {
+
     return (
-        <Card sx={{ maxWidth: 250 }}>
+        <Card className="Card">
             <CardMedia
                 component="img"
                 image={producto.img}
-                alt="" />
+                alt=""
+                className="image" />
             {/* Deberia agregar el ALT en datos y cargarlo aca */}
             <CardActionArea>
                 <CardContent>
@@ -19,13 +21,17 @@ const Item = ({ producto }) => {
                 </CardContent>
             </CardActionArea>
             <CardActions>
-                <Link
-                    to={`/item/${producto.id}`}
-                    variant="contained"
-                    className={"link"}>
-                    <Button variant="contained">Ver más</Button>
-                </Link>
-
+                {producto.stock > 0
+                    ?
+                    <Link
+                        to={`/item/${producto.id}`}
+                        variant="contained"
+                        className={"link"}>
+                        <Button variant="contained">ver más</Button>
+                    </Link>
+                    :
+                    <Button variant="disabled">Sin stock</Button>
+                }
             </CardActions>
             {/* configurar los estilos mas adelante */}
         </Card >

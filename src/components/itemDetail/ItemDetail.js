@@ -1,13 +1,13 @@
-import { Typography } from "@mui/material"
+import { Button, Typography } from "@mui/material"
 import React, { useState } from 'react'
 import ItemCount from "../itemCount/ItemCount"
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Unstable_Grid2';
-import { CaracteristicaLista } from "../../helpers/CaracteristicaLista";
 import { Link } from "react-router-dom";
 import { useCartContext } from "../../context/CartContext";
+import { ListaCaracteristicas } from "./ListaCaracteristicas";
 
 
 
@@ -41,58 +41,63 @@ export const ItemDetail = ({ item }) => {
 
     return (
 
-        <Box sx={{ flexGrow: 1 }}>
+        <Box sx={{ flexGrow: 2 }}>
             <Grid container spacing={2}>
                 <Grid xs={6} md={8}>
                     <Item>
-                        <img
-                            src={item.img}
-                            alt={""}
-                            loading="lazy"
-                        />
+                        <div>
+                            <img className="imageGrid"
+                                src={item.img}
+                                alt={""}
+                                loading="lazy"
+                            />
+                        </div>
+                        <div>
+                            <Typography variant="h5" color="text.secondary">
+                                Desripción
+                            </Typography>
+                            <Typography variant="body2" color="text.secondary">
+                                {item.desc}
+                            </Typography>
+                        </div>
                     </Item>
                 </Grid>
                 <Grid xs={6} md={4}>
                     <Item>
-                        <Typography gutterBottom variant="h5" component="div">
-                            {item.nombre}
-                        </Typography>
-                        <Typography gutterBottom variant="body2" component="div">
-                            Cantidad disponible: {item.stock}
-                        </Typography>
-                        <Typography variant="body2" color="text.secondary">
-                            Precio: ${item.precio}
-                        </Typography>
-
-                        {/* controlar stock 0 que no se pueda comprar */}
-                        {
-                            isInCart(item.id)
-                                ?
-                                <Link to="/cart">
-                                    Terminar mi compra
-                                </Link>
-                                :
-                                <ItemCount
-                                    max={item.stock}
-                                    counter={cantidad}
-                                    setCounter={setCantidad}
-                                    handleAgregar={handleAgregar}
-                                />
-                        }
-                    </Item>
-                </Grid>
-                <Grid xs={6} md={8}>
-                    <Item>
-                        <Typography variant="body2" color="text.secondary">
-                            {item.desc}
-                        </Typography>
-                    </Item>
-                </Grid>
-                <Grid xs={6} md={4}>
-                    <Item>
-                        <Typography gutterBottom variant="h5" component="div">
-                            <CaracteristicaLista Caracteristicas={item.caracteristicas} />
-                        </Typography>
+                        <div className="gridContainer">
+                            <Typography gutterBottom variant="h5" component="div">
+                                <strong>{item.nombre}</strong>
+                            </Typography>
+                            <Typography gutterBottom variant="body2" component="div">
+                                Cantidad disponible: {item.stock}
+                            </Typography>
+                            <Typography variant="body2" color="text.secondary">
+                                Precio: ${item.precio}
+                            </Typography>
+                            {/* controlar stock 0 que no se pueda comprar */}
+                            {
+                                isInCart(item.id)
+                                    ?
+                                    <Button variant="contained"><Link to="/cart" className="link">Terminar mi compra</Link></Button>
+                                    :
+                                    <ItemCount
+                                        max={item.stock}
+                                        counter={cantidad}
+                                        setCounter={setCantidad}
+                                        handleAgregar={handleAgregar}
+                                    />
+                            }
+                        </div>
+                        <hr />
+                        <div>
+                            <Typography gutterBottom variant="h5" component="div">
+                                Características del producto
+                            </Typography>
+                            <Typography gutterBottom variant="body1" component="ul">
+                                <ListaCaracteristicas caracteristicas={item.caracteristicas} />
+                            </Typography>
+                            <Button variant="contained"><Link to={`/productos/${item.categoria}`} className="link">Volver</Link></Button>
+                        </div>
                     </Item>
                 </Grid>
             </Grid>

@@ -13,7 +13,7 @@ export const Cart = () => {
             <div>
                 <h2>Tu carrito está vacío</h2>
                 <hr />
-                <Link to="/">Ir a comprar</Link>
+                <Button variant='contained'><Link to="/" className='link'>Ir a comprar</Link></Button>
             </div>
         )
     }
@@ -39,7 +39,8 @@ export const Cart = () => {
 
             <h4>Total: ${cartTotal()}</h4>
             <Button onClick={emptyCart}>Vaciar carrtio</Button>
-            <Link to="/checkout">Terminar mi compra</Link>
+            <Button variant='contained'><Link to="/checkout" className='link'>Terminar mi compra</Link></Button>
+
         </div>
     )
 }

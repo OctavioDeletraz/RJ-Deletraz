@@ -1,3 +1,17 @@
 .link {
     text-decoration: none;
 }
+
+.Card {
+    margin: 5px;
+    width: 200px;
+}
+
+.image {
+    height: 180px;
+    width: 100%;
+}
+
+.outOfStock {
+    opacity: 50%;
+}
