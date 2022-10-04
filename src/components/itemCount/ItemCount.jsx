@@ -1,6 +1,7 @@
 import React from 'react';
-import { IconButton, Container, ButtonGroup, Typography, Button } from '@mui/material';
+import { IconButton, Container, ButtonGroup, Typography, Button, Box } from '@mui/material';
 import { Remove, Add } from '@mui/icons-material';
+import "./itemCountStyle.scss"
 
 const ItemCount = ({ max, counter, setCounter, handleAgregar }) => {
 
@@ -21,26 +22,24 @@ const ItemCount = ({ max, counter, setCounter, handleAgregar }) => {
             <ButtonGroup variant="contained" aria-label="outlined primary button group">
                 <IconButton
                     onClick={handlerRestar}
-                    disabled={counter === 1}
-                >
+                    disabled={counter === 1}>
                     <Remove />
                 </IconButton>
-                <Button
-                    variant="disabled">
+                <Box className='counter'>
                     <Typography>{counter}</Typography>
-                </Button>
+                </Box>
                 <IconButton
                     onClick={handlerSumar}
                     disabled={counter === max}>
                     <Add />
                 </IconButton>
+                <Button
+                    onClick={handleAgregar}
+                    variant="contained"
+                    disabled={counter === 0}>
+                    Añadir
+                </Button>
             </ButtonGroup>
-            <Button
-                onClick={handleAgregar}
-                variant="contained"
-                disabled={counter === 0}>
-                Añadir
-            </Button>
         </Container>
     )
 }
