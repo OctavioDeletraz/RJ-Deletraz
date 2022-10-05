@@ -1,11 +1,17 @@
-import { Button } from '@mui/material'
+import { Button, Typography } from '@mui/material'
 import { useState } from 'react'
-import { Navigate } from 'react-router-dom'
+import { Link, Navigate } from 'react-router-dom'
 import { useCartContext } from '../../context/CartContext'
 import { addDoc, collection, getDocs, writeBatch, query, where, documentId } from 'firebase/firestore'
 import { db } from '../../firebase/config'
 import { useForm } from '../../hooks/useForm'
+import "./checkOutStyle.scss"
 // import { stock } from '../../data/data'
+
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+import { CheckOutOutOfStock } from './CheckOutOutOfStock'
+
 
 export const CheckOut = () => {
 
@@ -69,8 +75,7 @@ export const CheckOut = () => {
                         })
                 })
         } else {
-            alert("Hay items sin stock")
-            // Mostrar que productos estan sin stock!
+            <CheckOutOutOfStock noneStock={outOfStock} />
             console.log(outOfStock)
         }
     }
@@ -99,9 +104,16 @@ export const CheckOut = () => {
     if (orderId) {
         return (
             <div>
-                <h2>Compra exitosa!</h2>
+                <Typography variant='h3'>
+                    Compra exitosa!
+                </Typography>
                 <hr />
-                <p>Tu número de orden es: <strong>{orderId}</strong></p>
+                <Typography variant='paragraph'>
+                    Tu número de orden es: <strong>{orderId}</strong>
+                </Typography>
+                <Box>
+                    <Button variant="contained"><Link to="/productos" className="link">Volver</Link></Button>
+                </Box>
             </div>
         )
     }
@@ -111,38 +123,51 @@ export const CheckOut = () => {
     }
 
     return (
-        <div>
-            <h2>CheckOut</h2>
-            <hr />
-            <form onSubmit={handleSubmit}>
-                <input
-                    name='nombre'
-                    onChange={handleInputChange}
-                    type={"text"}
-                    value={values.nombre}
-                    placeholder="Tu nombre"
-                />
+        <Box className='checkOut'
+            component="form"
+            sx={{
+                '& > :not(style)': { m: 1, width: '25ch' },
+            }}
+            noValidate
+            autoComplete="off"
+            onSubmit={handleSubmit}
+        >
+            <Typography variant='h3' className='checkOutTitle'>
+                Tus datos
+            </Typography>
+            <TextField
+                className='inputCheckOut'
+                id="outlined-basic"
+                label="Nombre"
+                variant="outlined"
+                name='nombre'
+                onChange={handleInputChange}
+                type={"text"}
+                value={values.nombre}
+            />
+            <TextField
+                className='inputCheckOut'
+                id="outlined-basic"
+                label="Email"
+                variant="outlined"
+                name='email'
+                onChange={handleInputChange}
+                type={"email"}
+                value={values.email}
+            />
+            <TextField
+                className='inputCheckOut'
+                id="outlined-basic"
+                label="Dirección"
+                variant="outlined"
+                name='direccion'
+                onChange={handleInputChange}
+                type={"text"}
+                value={values.direccion}
+            />
+            <Button variant='contained' type="submit">Enviar</Button>
+            {/* <Button onClick={handleAgregarProductos}>productos</Button> */}
+        </Box>
 
-                <input
-                    name='email'
-                    onChange={handleInputChange}
-                    type={"email"}
-                    value={values.email}
-                    placeholder="Email"
-                />
-
-                <input
-                    name='direccion'
-                    onChange={handleInputChange}
-                    type={"text"}
-                    value={values.direccion}
-                    placeholder="Dirección"
-                />
-
-
-                <Button type="submit">Enviar</Button>
-                {/* <Button onClick={handleAgregarProductos}>productos</Button> */}
-            </form>
-        </div>
     )
 }

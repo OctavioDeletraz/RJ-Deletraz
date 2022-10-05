@@ -1,5 +1,5 @@
 import { useCartContext } from '../../context/CartContext'
-import { Button } from '@mui/material'
+import { Button, Typography } from '@mui/material'
 import { Link } from 'react-router-dom';
 import "./CartStyle.scss"
 import { CartItem } from './CartItem';
@@ -18,21 +18,23 @@ export const Cart = () => {
             </div >
         )
     }
+    console.log(cart)
     return (
-        <div className='cartContainer'>
-            <h2>Carrito</h2>
-            {cart.map(itemCart => (
-                <CartItem key={itemCart.id} item={itemCart} remove={removeItem} />
-            ))}
-
-            <div className="totalCart">
-                <p>Total compra: ${cartTotal().toFixed(2)}</p>
-            </div>
+        <div>
+            <Typography variant="h3">
+                Carrito
+            </Typography>
+            <Typography variant='h5'>
+                Total compra: ${cartTotal()}
+            </Typography>
             <hr />
-            <div className="cartButtons">
+            <div>
                 <Button onClick={emptyCart}>Vaciar carrtio</Button>
                 <Button variant='contained'><Link to="/checkout" className='link'>Finalizar compra</Link></Button>
             </div>
+            {cart.map(itemCart => (
+                <CartItem key={itemCart.id} item={itemCart} remove={removeItem} />
+            ))}
         </div>
     )
 }

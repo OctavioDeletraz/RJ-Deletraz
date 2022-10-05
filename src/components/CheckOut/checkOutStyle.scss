@@ -1,0 +1,13 @@
+.checkOut {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .checkOutTitle {
+        text-align: center;
+    }
+
+    .inputCheckOut {
+        background-color: #fff;
+    }
+}

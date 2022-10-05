@@ -31,6 +31,7 @@ export const ItemDetail = ({ item }) => {
             id: item.id,
             precio: item.precio,
             nombre: item.nombre,
+            img: item.img,
             cantidad
         }
         isInCart(item.id)
