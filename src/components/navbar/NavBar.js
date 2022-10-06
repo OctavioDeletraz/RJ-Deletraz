@@ -15,8 +15,11 @@ import { useState } from 'react';
 import { useLoginContext } from '../../context/LoginContext';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { AccountCircle } from '@mui/icons-material';
+import { useCartContext } from '../../context/CartContext';
 
 function UseAppBarLabel(label) {
+
+    const { cart } = useCartContext()
 
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
@@ -65,14 +68,19 @@ function UseAppBarLabel(label) {
                 </Menu>
 
             </IconButton>
-            <Icon icon="emojione:hammer" width="25" height="25"></Icon>
+            <Icon icon="emojione:hammer" width="25" height="25" />
             <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
                 {label}
                 <Link to={'/'} className={"link"}><Button>Productos</Button></Link>
             </Typography>
-            <IconButton>
-                <CartWidget />
-            </IconButton>
+            {cart.length > 0
+                ?
+                <IconButton>
+                    <CartWidget />
+                </IconButton>
+                :
+                <></>
+            }
             <IconButton>
                 <AccountCircle />
             </IconButton>
