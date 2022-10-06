@@ -7,7 +7,6 @@ import { db } from '../../firebase/config'
 import { useForm } from '../../hooks/useForm'
 import "./checkOutStyle.scss"
 // import { stock } from '../../data/data'
-
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { CheckOutOutOfStock } from './CheckOutOutOfStock'
@@ -23,8 +22,8 @@ export const CheckOut = () => {
     })
 
     const [orderId, setOrderId] = useState(null)
-
-
+    const [noStock, setNoStock] = useState(false)
+    const [noneStock, setNoneStock] = useState(null)
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -50,6 +49,7 @@ export const CheckOut = () => {
         const q = query(productosRef, where(documentId(), 'in', cart.map(item => item.id)))
 
         const productos = await getDocs(q)
+
         const outOfStock = []
 
         productos.docs.forEach((doc) => {
@@ -75,11 +75,10 @@ export const CheckOut = () => {
                         })
                 })
         } else {
-            <CheckOutOutOfStock noneStock={outOfStock} />
-            console.log(outOfStock)
+            setNoStock(true)
+            setNoneStock(outOfStock)
         }
     }
-
     // Funcion para agregar los productos de forma hardcodeada
 
     // const handleAgregarProductos = () => {
@@ -123,51 +122,60 @@ export const CheckOut = () => {
     }
 
     return (
-        <Box className='checkOut'
-            component="form"
-            sx={{
-                '& > :not(style)': { m: 1, width: '25ch' },
-            }}
-            noValidate
-            autoComplete="off"
-            onSubmit={handleSubmit}
-        >
-            <Typography variant='h3' className='checkOutTitle'>
-                Tus datos
-            </Typography>
-            <TextField
-                className='inputCheckOut'
-                id="outlined-basic"
-                label="Nombre"
-                variant="outlined"
-                name='nombre'
-                onChange={handleInputChange}
-                type={"text"}
-                value={values.nombre}
-            />
-            <TextField
-                className='inputCheckOut'
-                id="outlined-basic"
-                label="Email"
-                variant="outlined"
-                name='email'
-                onChange={handleInputChange}
-                type={"email"}
-                value={values.email}
-            />
-            <TextField
-                className='inputCheckOut'
-                id="outlined-basic"
-                label="Dirección"
-                variant="outlined"
-                name='direccion'
-                onChange={handleInputChange}
-                type={"text"}
-                value={values.direccion}
-            />
-            <Button variant='contained' type="submit">Enviar</Button>
-            {/* <Button onClick={handleAgregarProductos}>productos</Button> */}
-        </Box>
-
+        <>
+            {
+                noStock
+                    ?
+                    <CheckOutOutOfStock noneStock={noneStock} />
+                    :
+                    <>
+                        <Box className='checkOut'
+                            component="form"
+                            sx={{
+                                '& > :not(style)': { m: 1, width: '25ch' },
+                            }}
+                            noValidate
+                            autoComplete="off"
+                            onSubmit={handleSubmit}
+                        >
+                            <Typography variant='h3' className='checkOutTitle'>
+                                Tus datos
+                            </Typography>
+                            <TextField
+                                className='inputCheckOut'
+                                id="outlined-basic"
+                                label="Nombre"
+                                variant="outlined"
+                                name='nombre'
+                                onChange={handleInputChange}
+                                type={"text"}
+                                value={values.nombre}
+                            />
+                            <TextField
+                                className='inputCheckOut'
+                                id="outlined-basic"
+                                label="Email"
+                                variant="outlined"
+                                name='email'
+                                onChange={handleInputChange}
+                                type={"email"}
+                                value={values.email}
+                            />
+                            <TextField
+                                className='inputCheckOut'
+                                id="outlined-basic"
+                                label="Dirección"
+                                variant="outlined"
+                                name='direccion'
+                                onChange={handleInputChange}
+                                type={"text"}
+                                value={values.direccion}
+                            />
+                            <Button variant='contained' type="submit">Enviar</Button>
+                            {/* <Button onClick={handleAgregarProductos}>productos</Button> */}
+                        </Box>
+                    </>
+            }
+        </>
     )
 }

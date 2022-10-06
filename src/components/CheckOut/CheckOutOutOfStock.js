@@ -3,7 +3,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import "./checkOutStyle.scss"
 
-export const CheckOutOutOfStock = (noneStock) => {
+export const CheckOutOutOfStock = ({ noneStock }) => {
     return (
         <Box>
             <Typography variant='h3'>
@@ -14,22 +14,19 @@ export const CheckOutOutOfStock = (noneStock) => {
             </Typography>
             <hr />
             {noneStock.map(item =>
-                <Card key={item.id} className="outofstock__item">
-                    <CardMedia className="imgCart"
+                <Card key={item.id} className="outOfStock">
+                    <CardMedia className="imgNoneStock"
                         component="img"
                         image={item.img}
                         alt="img producto"
                     />
                     <Typography variant='body2'>
-                        {item.title}
-                    </Typography>
-                    <Typography variant='body3'>
-                        Cantidad disponible: {item.stock}
+                        {item.nombre}
                     </Typography>
                 </Card>)}
             <hr />
             <Typography variant='body1'>Por favor, regrese al carrito y actualice su compra</Typography>
-            <Button variant='contained'><Link to='/cart'>Volver al carrito</Link></Button>
+            <Button variant='contained'><Link className='link' to='/cart'>Volver al carrito</Link></Button>
         </Box>
     )
 }

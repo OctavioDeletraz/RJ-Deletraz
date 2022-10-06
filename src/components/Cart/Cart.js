@@ -18,7 +18,6 @@ export const Cart = () => {
             </div >
         )
     }
-    console.log(cart)
     return (
         <div>
             <Typography variant="h3">

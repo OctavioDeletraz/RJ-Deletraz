@@ -27,7 +27,7 @@ function UseAppBarLabel(label) {
         setAnchorEl(null);
     };
 
-    const { user, logout } = useLoginContext()
+    const { logout } = useLoginContext()
 
     return (
         <Toolbar>
